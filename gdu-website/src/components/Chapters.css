@@ -1,0 +1,192 @@
+.chapters {
+  border-top: 1px solid var(--line);
+  background:
+    radial-gradient(45% 40% at 15% 30%, rgba(247, 168, 35, 0.07), transparent 70%),
+    radial-gradient(45% 40% at 90% 70%, rgba(74, 134, 255, 0.08), transparent 70%),
+    var(--ink);
+}
+
+.chapter-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 2.4vw, 32px);
+}
+
+.chapter {
+  --hud-c: var(--c);
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 3.4vw, 44px);
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease;
+}
+
+.chapter:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--c) 45%, transparent);
+}
+
+.chapter-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: 700 12px var(--f-mono);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.chapter-short {
+  padding: 5px 9px;
+  background: var(--c);
+  color: var(--ink);
+}
+
+.chapter-est {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* outlined year, like the footer wordmark */
+.chapter-year {
+  margin-top: 18px;
+  font: 400 clamp(64px, 9vw, 128px) / 0.9 var(--f-display);
+  color: transparent;
+  -webkit-text-stroke: 2px var(--c);
+  letter-spacing: -0.02em;
+  transition: color 0.4s ease;
+}
+
+.chapter:hover .chapter-year {
+  color: color-mix(in srgb, var(--c) 22%, transparent);
+}
+
+.chapter-name {
+  margin-top: 18px;
+  font: 400 clamp(24px, 2.8vw, 36px) var(--f-display);
+  color: var(--cream);
+  text-transform: uppercase;
+}
+
+.chapter-place {
+  margin-top: 8px;
+  font: 500 12px var(--f-mono);
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.chapter-tagline {
+  margin-top: 16px;
+  font: 600 clamp(17px, 1.6vw, 20px) var(--f-ui);
+  color: var(--text);
+}
+
+.chapter-facts {
+  margin: 24px 0 0;
+  border-top: 1px solid var(--line-2);
+}
+
+.chapter-facts div {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--line);
+}
+
+.chapter-facts dt {
+  font: 600 11px var(--f-mono);
+  letter-spacing: 0.14em;
+  color: var(--c);
+  text-transform: uppercase;
+  padding-top: 3px;
+}
+
+.chapter-facts dd {
+  margin: 0;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.chapter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: auto 0 0;
+  padding: 24px 0 0;
+  list-style: none;
+}
+
+.chapter-tags li {
+  padding: 5px 9px;
+  border: 1px solid var(--line-2);
+  font: 500 11.5px var(--f-mono);
+  color: var(--text);
+}
+
+/* ---- joint strip ---- */
+.together {
+  display: flex;
+  align-items: center;
+  gap: 20px 32px;
+  margin-top: clamp(16px, 2.4vw, 32px);
+  padding: 22px clamp(20px, 3vw, 36px);
+  border: 1px solid var(--line-2);
+  background: repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.02) 0 10px, transparent 10px 20px);
+}
+
+.together-label {
+  flex: none;
+  font: 700 12px var(--f-ui);
+  letter-spacing: 0.26em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.together-label span {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.together ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.together li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.together li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+@media (max-width: 980px) {
+  .chapter-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .together {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .chapter-facts div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
