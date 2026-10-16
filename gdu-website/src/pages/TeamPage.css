@@ -1,0 +1,250 @@
+.team-page {
+  min-height: 100vh;
+  padding: calc(var(--nav-h) + 56px) 0 clamp(64px, 9vw, 110px);
+  background-color: var(--ink);
+}
+
+.team-head {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  margin-bottom: clamp(56px, 8vw, 96px);
+}
+
+.team-tag {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font: 600 12px var(--f-ui);
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.team-tag::before,
+.team-tag::after {
+  content: "";
+  width: clamp(40px, 10vw, 120px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.team-tag::after {
+  transform: scaleX(-1);
+}
+
+.team-tag span {
+  padding: 6px 14px;
+  border: 1px solid var(--gold);
+}
+
+.team-title {
+  margin-top: 26px;
+  font-size: clamp(52px, 10vw, 140px);
+}
+
+.team-jump {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 32px;
+}
+
+.team-jump a {
+  padding: 9px 18px;
+  border: 1px solid var(--line-2);
+  font: 600 12px var(--f-mono);
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  text-transform: uppercase;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.team-jump a:hover {
+  color: var(--ink);
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+/* ---- sections ---- */
+.team-section + .team-section {
+  margin-top: clamp(72px, 10vw, 128px);
+}
+
+.team-section .lvl {
+  margin-bottom: clamp(28px, 4vw, 44px);
+}
+
+/* these titles are longer than the home page's, so they run a size smaller */
+.team-section .lvl-title {
+  font-size: clamp(30px, 4.8vw, 60px);
+}
+
+/* ---- boxes: 5 per row, smaller than the PICT council page ---- */
+.team-grid {
+  --cols: 5;
+  --gap: clamp(12px, 1.6vw, 20px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gap);
+}
+
+.team-grid > .member {
+  flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
+  min-width: 0;
+}
+
+.member {
+  --hud-c: var(--c);
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease;
+}
+
+.member:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--c) 45%, transparent);
+}
+
+.member-photo {
+  position: relative;
+  aspect-ratio: 4 / 4.4;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #08080b;
+}
+
+.member-photo > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 22%; /* keep heads in frame for tall portraits */
+  filter: grayscale(0.25);
+  transition: transform 0.6s ease, filter 0.4s ease;
+}
+
+.member:hover .member-photo > img {
+  transform: scale(1.05);
+  filter: none;
+}
+
+.member-empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(60% 55% at 50% 50%, color-mix(in srgb, var(--c) 22%, transparent), transparent 70%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 4px);
+}
+
+.member-empty img {
+  position: absolute;
+  width: 62%;
+  opacity: 0.08;
+  filter: grayscale(1);
+  mix-blend-mode: screen;
+}
+
+.member-empty span {
+  position: relative;
+  font: 400 clamp(34px, 3.6vw, 48px) var(--f-display);
+  color: var(--c);
+  text-shadow: 0 0 34px color-mix(in srgb, var(--c) 60%, transparent);
+}
+
+.member-info {
+  padding: 16px 4px 14px;
+  text-align: center;
+}
+
+.member-info h3 {
+  font: 700 clamp(15px, 1.35vw, 18px) / 1.25 var(--f-ui);
+  color: var(--cream);
+}
+
+.member-info h3.is-tba {
+  color: var(--dim);
+  font-weight: 500;
+}
+
+.member-role {
+  margin-top: 6px;
+  font: 600 10px / 1.5 var(--f-mono);
+  letter-spacing: 0.12em;
+  color: var(--c);
+  text-transform: uppercase;
+}
+
+.member-socials {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-top: auto;
+  padding: 10px 0 2px;
+  border-top: 1px solid var(--line);
+}
+
+.member-socials a,
+.member-socials span {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  color: var(--c);
+}
+
+.member-socials span {
+  opacity: 0.25;
+}
+
+.member-socials a:hover {
+  color: var(--cream);
+}
+
+/* ---- empty group ---- */
+.team-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: clamp(32px, 5vw, 56px) 24px;
+  border: 1px dashed var(--line-2);
+  background: repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.02) 0 10px, transparent 10px 20px);
+  text-align: left;
+}
+
+.team-empty img {
+  border: 1px solid var(--line-2);
+  opacity: 0.6;
+  filter: grayscale(1);
+}
+
+.team-empty p {
+  font: 500 13px var(--f-mono);
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+@media (max-width: 1000px) {
+  .team-grid {
+    --cols: 3;
+  }
+}
+
+@media (max-width: 760px) {
+  .team-grid {
+    --cols: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-empty {
+    flex-direction: column;
+    text-align: center;
+  }
+}

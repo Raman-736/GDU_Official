@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { NAV_LINKS } from "../data/site.js";
 import { useActiveSection } from "../hooks/useReveal.js";
 import { sfx } from "../utils/sfx.js";
@@ -8,12 +9,13 @@ import "./Navbar.css";
 const SECTION_IDS = ["top", "about", "chapters", "arcade", "events", "achievements", "allies", "join"];
 
 export default function Navbar({ onPlay }) {
+  const { pathname } = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState("");
   const [sound, setSound] = useState(sfx.enabled);
 
-  useActiveSection(SECTION_IDS, setActive, "home");
+  useActiveSection(SECTION_IDS, setActive, pathname);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -26,7 +28,10 @@ export default function Navbar({ onPlay }) {
     document.body.classList.toggle("no-scroll", menuOpen);
   }, [menuOpen]);
 
-  const isActive = (link) => active === link.id;
+  useEffect(() => setMenuOpen(false), [pathname]);
+
+  const isActive = (link) =>
+    link.to === pathname || (pathname === "/" && link.to === `/#${link.id}` && active === link.id);
 
   const toggleSound = () => {
     sfx.set(!sound);
@@ -34,26 +39,26 @@ export default function Navbar({ onPlay }) {
   };
 
   return (
-    <header className={`nav ${scrolled ? "is-solid" : ""} ${menuOpen ? "is-open" : ""}`}>
+    <header className={`nav ${scrolled || pathname !== "/" ? "is-solid" : ""} ${menuOpen ? "is-open" : ""}`}>
       <div className="nav-inner">
-        <a href="#top" className="nav-brand" aria-label="GameDevUtopia home" onClick={() => setMenuOpen(false)}>
+        <Link to="/" className="nav-brand" aria-label="GameDevUtopia home" onClick={() => setMenuOpen(false)}>
           <img src="/images/gdu_logo.png" alt="" width="36" height="36" />
           <span className="nav-brand-text">
             GAMEDEV<i>/</i>UTOPIA
           </span>
-        </a>
+        </Link>
 
         <nav className="nav-links" aria-label="Primary">
           {NAV_LINKS.map((link, i) => (
-            <a
+            <Link
               key={link.id}
-              href={link.to}
+              to={link.to}
               className={isActive(link) ? "is-active" : ""}
               onClick={() => setMenuOpen(false)}
             >
               <span className="nav-num">0{i + 1}</span>
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 

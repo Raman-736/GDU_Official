@@ -2,7 +2,7 @@
 
 Website for **GameDevUtopia (GDU)** as a whole: GDU PICT (Pune) and GDU IIIT Kottayam.
 Same design as the GDU PICT site, but general: no council page, and every section covers both chapters.
-React 19 + Vite, plain CSS, no backend, a single page (no router).
+React 19 + Vite + React Router, plain CSS, no backend.
 
 ## Run
 
@@ -26,7 +26,13 @@ Hero, tools strip, then:
 | 05    | Wins      | Competition results, one tab per chapter, with winning team names             |
 | 06    | Mentors   | Industry connections and what members walk away with                          |
 
-`/#play-now` opens the game straight away.
+## Pages
+
+| Route        | What's there                                                                          |
+| ------------ | ------------------------------------------------------------------------------------- |
+| `/`          | Home: the sections above                                                              |
+| `/team`      | Board members, GDU PICT council 2026-27, GDU IIITK council 2026-27                    |
+| `/#play-now` | Opens the game straight away (shareable link)                                         |
 
 ## Editing content
 
@@ -37,6 +43,8 @@ All copy is in `src/data/site.js`. Components only lay it out.
 - Festivals: `FESTIVALS`
 - Results: `WINS.pict` and `WINS.iiitk`
 - Social links: `SOCIALS`
+- People on `/team`: `src/data/team.js` (`BOARD`, `PICT_COUNCIL`, `IIITK_COUNCIL`). Photos go in
+  `public/images/team/`. The IIITK council is empty for now; add people in the same shape and the section fills in.
 
 ## The game and media
 
@@ -47,7 +55,11 @@ rebuilding). `public/media/` holds the hero loop and showreel from the member's 
 ## Deploying
 
 Build command `npm install && npm run build`, publish directory `dist`, root directory `gdu-website`.
-There are no client-side routes, so no rewrite rule is needed.
+The site has a real `/team` route, so the host must send unknown paths to `index.html`:
+
+- **Render:** Redirects/Rewrites, Source `/*`, Destination `/index.html`, Action **Rewrite**
+- **Vercel:** `vercel.json` is already in this folder
+- **Netlify:** add `public/_redirects` containing `/*  /index.html  200`
 
 ## Before going live
 

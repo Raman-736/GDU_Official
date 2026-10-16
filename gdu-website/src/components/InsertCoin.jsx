@@ -15,7 +15,7 @@ export default function InsertCoin({ onPlay }) {
             slot on the team for you.
           </p>
           <div className="coin-ctas">
-            <a href="#contact" className="btn">
+            <a href="#contact" className="btn" onClick={(e) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView(); }}>
               Join GDU
             </a>
             <button type="button" className="btn btn-ghost" onClick={onPlay}>

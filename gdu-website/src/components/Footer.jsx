@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Instagram, Linkedin, Mail } from "lucide-react";
 import { NAV_LINKS, SOCIALS } from "../data/site.js";
 import "./Footer.css";
@@ -20,9 +21,9 @@ export default function Footer() {
           <nav className="footer-col" aria-label="Footer">
             <p className="footer-h">Menu</p>
             {NAV_LINKS.map((l) => (
-              <a key={l.id} href={l.to}>
+              <Link key={l.id} to={l.to}>
                 {l.label}
-              </a>
+              </Link>
             ))}
           </nav>
 

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { HERO, SHOWCASE } from "../data/site.js";
 import "./Hero.css";
 
@@ -88,9 +89,9 @@ export default function Hero({ onPlay }) {
           <button type="button" className="btn" onClick={onPlay}>
             <span className="btn-tri" aria-hidden="true" /> Start game
           </button>
-          <a href="#achievements" className="btn btn-ghost">
+          <Link to="/#achievements" className="btn btn-ghost">
             View wins
-          </a>
+          </Link>
         </div>
       </div>
 

@@ -2,11 +2,12 @@
 // components. Source: GDU Brochure 2026 (PICT Pune and IIIT Kottayam).
 
 export const NAV_LINKS = [
-  { id: "about", label: "About", to: "#about" },
-  { id: "chapters", label: "Chapters", to: "#chapters" },
-  { id: "arcade", label: "Arcade", to: "#arcade" },
-  { id: "events", label: "Events", to: "#events" },
-  { id: "achievements", label: "Wins", to: "#achievements" },
+  { id: "about", label: "About", to: "/#about" },
+  { id: "chapters", label: "Chapters", to: "/#chapters" },
+  { id: "arcade", label: "Arcade", to: "/#arcade" },
+  { id: "events", label: "Events", to: "/#events" },
+  { id: "achievements", label: "Wins", to: "/#achievements" },
+  { id: "team", label: "Team", to: "/team" },
 ];
 
 export const SOCIALS = [
