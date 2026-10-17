@@ -248,3 +248,27 @@
     display: none;
   }
 }
+
+/* ---- link through to the full library ---- */
+.arcade-more {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px 32px;
+  margin-top: clamp(40px, 6vw, 72px);
+  padding: clamp(20px, 3vw, 32px) clamp(20px, 3vw, 36px);
+  border: 1px solid var(--line-2);
+  background: linear-gradient(90deg, rgba(247, 168, 35, 0.08), transparent 70%);
+}
+
+.arcade-more p {
+  font: 500 clamp(15px, 1.6vw, 18px) var(--f-ui);
+  color: var(--text);
+}
+
+.arcade-more b {
+  color: var(--gold);
+  font-family: var(--f-display);
+  font-weight: 400;
+}

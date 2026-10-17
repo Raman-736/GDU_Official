@@ -7,25 +7,45 @@ import Footer from "./components/Footer.jsx";
 import GameModal from "./components/GameModal.jsx";
 import Home from "./pages/Home.jsx";
 import TeamPage from "./pages/TeamPage.jsx";
+import GamesPage from "./pages/GamesPage.jsx";
+import DesignsPage from "./pages/DesignsPage.jsx";
+import { GAME } from "./data/site.js";
+import { GAMES } from "./data/games.js";
 import { useReveal } from "./hooks/useReveal.js";
 import { sfx } from "./utils/sfx.js";
 
+// The sip game built into /public/play, the club's flagship playable.
+const ISLAND = { id: "gdu-island", title: GAME.title, play: "/play/index.html" };
+
+const asPlayer = (g) => ({ id: g.id, title: g.title, play: g.play, itch: g.itch, byline: `by ${g.developers.join(", ")}` });
+
 export default function App() {
   const location = useLocation();
-  const [gameOpen, setGameOpen] = useState(false);
+  const [activeGame, setActiveGame] = useState(null);
+  const gameOpen = activeGame !== null;
   const openGame = useCallback(() => {
     sfx.start();
-    setGameOpen(true);
+    setActiveGame(ISLAND);
   }, []);
-  const closeGame = useCallback(() => setGameOpen(false), []);
+  const playGame = useCallback((g) => {
+    sfx.start();
+    setActiveGame(asPlayer(g));
+  }, []);
+  const closeGame = useCallback(() => setActiveGame(null), []);
 
   useReveal(location.pathname);
 
   // Hash links (/#about) scroll to the section; route changes start at the top.
-  // `/#play-now` is a shareable link that opens the game straight away.
+  // `/#play-now` is a shareable link that opens the island game straight away,
+  // and `/games#play-<id>` opens any web-playable game from the library.
   useEffect(() => {
     if (location.hash === "#play-now") {
-      setGameOpen(true);
+      setActiveGame(ISLAND);
+      return;
+    }
+    const shared = location.hash.startsWith("#play-") && GAMES.find((g) => g.play && `#play-${g.id}` === location.hash);
+    if (shared) {
+      setActiveGame(asPlayer(shared));
       return;
     }
     const target = location.hash && document.getElementById(location.hash.slice(1));
@@ -60,10 +80,12 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home onPlay={openGame} />} />
         <Route path="/team" element={<TeamPage />} />
+        <Route path="/games" element={<GamesPage onPlayGame={playGame} />} />
+        <Route path="/designs" element={<DesignsPage />} />
         <Route path="*" element={<Home onPlay={openGame} />} />
       </Routes>
       <Footer />
-      <GameModal open={gameOpen} onClose={closeGame} />
+      <GameModal game={activeGame} onClose={closeGame} />
     </>
   );
 }

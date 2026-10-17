@@ -1,0 +1,11 @@
+{
+  "clone-escape":         { "title": "Clone Escape",         "exe": "CloneEscape/CloneEscape.exe",                                                    "mem": 64 },
+  "event-horizon":        { "title": "Event Horizon",        "exe": "Event_Horizon/Event_Horizon.exe",                                                "mem": 64 },
+  "rewind":               { "title": "REWIND",               "exe": "REWIND/REWIND.exe",                                                              "mem": 64 },
+  "sunken":               { "title": "Sunken",               "exe": "SUNKEN_GAME/Sunken.exe",                                                         "mem": 128 },
+  "celestial-knife":      { "title": "Celestial Knife",      "exe": "celestialKnife/celestialKnife.exe",                                              "mem": 128 },
+  "rusty-chamber":        { "title": "Rusty Chamber",        "exe": "executable/executable/RustyChambers.exe",                                        "mem": 192 },
+  "vibora":               { "title": "Vibora",               "exe": "game-pasc/pasc-snake.exe",                                                       "mem": 32 },
+  "space-warriors":       { "title": "Space Warriors",       "exe": "13 - spaceW game/13 - spaceW game/SpaceWarrior.exe",                             "mem": 128 },
+  "algorithm-visualizer": { "title": "Algorithm Visualizer", "exe": "16 - algorithms_visualizer/16 - algorithms_visualizer/Algorithms_Visualizer.exe", "mem": 64 }
+}

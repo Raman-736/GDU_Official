@@ -11,7 +11,7 @@ import InsertCoin from "../components/InsertCoin.jsx";
 export default function Home({ onPlay }) {
   return (
     <main>
-      <Hero onPlay={onPlay} />
+      <Hero />
       <Tape />
       <About />
       <Chapters />
@@ -19,7 +19,7 @@ export default function Home({ onPlay }) {
       <Events />
       <Achievements />
       <Allies />
-      <InsertCoin onPlay={onPlay} />
+      <InsertCoin />
     </main>
   );
 }

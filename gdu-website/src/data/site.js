@@ -5,6 +5,8 @@ export const NAV_LINKS = [
   { id: "about", label: "About", to: "/#about" },
   { id: "chapters", label: "Chapters", to: "/#chapters" },
   { id: "arcade", label: "Arcade", to: "/#arcade" },
+  { id: "games", label: "Games", to: "/games" },
+  { id: "designs", label: "Designs", to: "/designs" },
   { id: "events", label: "Events", to: "/#events" },
   { id: "achievements", label: "Wins", to: "/#achievements" },
   { id: "team", label: "Team", to: "/team" },

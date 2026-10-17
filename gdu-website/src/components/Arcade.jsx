@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import LevelHeader from "./LevelHeader.jsx";
 import { GAME, SHOWCASE } from "../data/site.js";
+import { GAMES } from "../data/games.js";
 import "./Arcade.css";
 
 function ShowcasePlayer() {
@@ -42,7 +44,7 @@ export default function Arcade({ onPlay }) {
         <LevelHeader
           level="03"
           kicker="The arcade"
-          sub="Everything here was made by GDU members. One of them you can play right now."
+          sub="Everything here was made by GDU members. Play them right in your browser."
         >
           Made by <span className="gold">members.</span>
         </LevelHeader>
@@ -103,6 +105,16 @@ export default function Arcade({ onPlay }) {
           </div>
           <ShowcasePlayer />
         </article>
+
+        {/* The full games library */}
+        <div className="arcade-more" data-reveal>
+          <p>
+            <b>{GAMES.length}</b> games built by members, <b>{GAMES.filter((g) => g.play).length}</b> playable right on this site.
+          </p>
+          <Link to="/games" className="btn">
+            Browse all games
+          </Link>
+        </div>
       </div>
     </section>
   );

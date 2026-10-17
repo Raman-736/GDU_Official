@@ -1,6 +1,6 @@
 import "./InsertCoin.css";
 
-export default function InsertCoin({ onPlay }) {
+export default function InsertCoin() {
   return (
     <section className="coin" id="join">
       <div className="wrap">
@@ -18,9 +18,6 @@ export default function InsertCoin({ onPlay }) {
             <a href="#contact" className="btn" onClick={(e) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView(); }}>
               Join GDU
             </a>
-            <button type="button" className="btn btn-ghost" onClick={onPlay}>
-              <span className="btn-tri" aria-hidden="true" /> Play our game first
-            </button>
           </div>
         </div>
       </div>

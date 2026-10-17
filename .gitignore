@@ -1,0 +1,8 @@
+# Desktop .exe builds of the club's games (4+ GB). The site only uses the converted
+# web copies in gdu-website/public/arcade/, see gdu-website/scripts/web-games/README.md
+Games/
+
+# Source of the old gamedevutopia.in site, kept only for reference
+Game-Dev-Utopia.github.io-prod-website-frontend/
+
+node_modules/

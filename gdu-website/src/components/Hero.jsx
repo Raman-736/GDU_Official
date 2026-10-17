@@ -12,7 +12,7 @@ function useClock() {
   return now.toLocaleTimeString("en-GB", { timeZone: "Asia/Kolkata", hour12: false });
 }
 
-export default function Hero({ onPlay }) {
+export default function Hero() {
   const videoRef = useRef(null);
   const barRef = useRef(null);
   const sectionRef = useRef(null);
@@ -86,11 +86,11 @@ export default function Hero({ onPlay }) {
           {HERO.sub}
         </p>
         <div className="hero-ctas" data-reveal style={{ "--d": "0.25s" }}>
-          <button type="button" className="btn" onClick={onPlay}>
-            <span className="btn-tri" aria-hidden="true" /> Start game
-          </button>
-          <Link to="/#achievements" className="btn btn-ghost">
-            View wins
+          <Link to="/games" className="btn">
+            <span className="btn-tri" aria-hidden="true" /> Games
+          </Link>
+          <Link to="/designs" className="btn btn-ghost">
+            Designs
           </Link>
         </div>
       </div>
